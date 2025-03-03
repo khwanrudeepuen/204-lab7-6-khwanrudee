@@ -18,6 +18,8 @@ public class Airplane : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Vector3 lift = Vector3.Project(rb.linearVelocity, transform.forward);
+        rb.AddForce(transform.up * lift.magnitude * liftBooter);
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(transform.forward * enginePower);
